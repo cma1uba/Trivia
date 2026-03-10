@@ -6,6 +6,8 @@ const nextBtn = document.getElementById("next-btn");
 const quizContainer = document.getElementById("quiz-container");
 
 let questions = [];
+
+
 let currentIndex = 0;
 let score = 0;
 
