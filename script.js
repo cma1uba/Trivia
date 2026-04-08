@@ -14,13 +14,13 @@ let score = 0;
 async function startQuiz() {
     const res = await fetch("https://opentdb.com/api.php?amount=10&type=multiple");
     const data = await res.json();
-    // Clean the data: combine correct and incorrect answers into one shuffled array
+    
     questions = data.results.map(q => {
         const answers = [...q.incorrect_answers, q.correct_answer];
         return {
             question: q.question,
             correct: q.correct_answer,
-            answers: answers.sort(() => Math.random() - 0.5) // Random shuffle
+            answers: answers.sort(() => Math.random() - 0.5)
         };
     });
     
@@ -40,15 +40,15 @@ async function startQuiz() {
 startQuiz();
 
 nextBtn.addEventListener("click", () => {
-    // 1. Increment the index to move to the next question
+   
     currentIndex++;
 
-    // 2. Check if we still have questions left
+    
     if (currentIndex < questions.length) {
-        // Show the next question
+       
         showQuestion();
         
-        // Hide the next button again until the next answer is picked
+        
         nextBtn.classList.add("hidden");
         
         // Update the question counter in the UI
